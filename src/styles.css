@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+ng-sidebar-content{
+  height: calc(100vh);
+
+}
+.content-sidebar{
+    padding-left: 15px
+}
+.menu-sidebar{
+  height: calc(100vh);
+  padding: 0;
+  background: #f4f5f7;
+  color:#42526E;
+}
+nav.flex-column {
+    padding: 15px;
+}
+a.nav-link.active {
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 8px 12px 8px 12px;
+    background-color: rgba(9, 30, 66, 0.04);
+    color: #0052CC;
+    text-decoration: none;
+    height: 50px;
+    overflow: hidden;
+}
+a.nav-link {
+    border-radius: 3px;
+    box-sizing: border-box;
+    -webkit-flex: none;
+    background-color: transparent;
+    color: #42526E;
+    text-decoration: none;
+    padding: 8px 12px 8px 12px;
+    height: 50px;
+    overflow: hidden;
+}
+a.nav-link:hover {
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 8px 12px 8px 12px;
+    background-color: rgba(9, 30, 66, 0.04);
+    color: #42526E;
+    text-decoration: none;
+    height: 50px;
+    overflow: hidden;
+}
+/*Estilo de titulos de catalogos*/
+.view-list-header{
+  font-size: 1.71428571em;
+    font-style: inherit;
+    font-weight: 500;
+    letter-spacing: -.01em;
+    line-height: 1.16666667;
+    margin-top: 28px;
+    color: #172B4D;
+}

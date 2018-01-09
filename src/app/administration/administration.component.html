@@ -1,0 +1,12 @@
+<ng-sidebar-container style="height: 100vh" contentClass="sidebar-class">
+
+  <!-- A sidebar -->
+  <ng-sidebar [(opened)]="_opened" mode="push" [dock]="true" [dockedSize]="'50px'" [autoCollapseWidth]="300" [autoFocus]="false">
+    <app-menu (change)="toogleMenu($event)"></app-menu>
+  </ng-sidebar>
+
+  <!-- Page content -->
+  <div ng-sidebar-content >
+    ADIMINISTRADOR
+  </div>
+</ng-sidebar-container>

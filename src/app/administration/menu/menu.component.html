@@ -1,0 +1,18 @@
+<div class="container menu-sidebar">
+  <div class="row">
+    <div class="col align-self-end text-right pr-4" style="font-size:1.5vw">
+      <span  (click)="toogleMenu();">
+        <i class="fas fa-times" *ngIf="toogle"></i>
+        <i class="fas fa-plus" *ngIf="!toogle"></i>
+      </span>
+    </div>
+  </div>
+  <nav class="nav flex-column p-10">
+    <a class="nav-link header-menu" routerLink="/administration" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
+      <img src="../assets/logo-grana.png" alt="GRANA" width="80"> GRANA
+    </a>
+    <hr>
+    <a class="nav-link" routerLink="/administration/categories" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">Categorias</a>
+    <a class="nav-link" routerLink="/administration/products" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">Productos</a>
+  </nav>
+</div>
