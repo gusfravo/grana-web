@@ -15,7 +15,7 @@
     </div>
     <div class="row">
       <div class="col-10 d-flex justify-content-end">
-        <button type="button" class="btn btn-light btn-sm">Crear Categoría</button>
+        <button type="button" class="btn btn-light btn-sm" (click)="viewUpdateCategories('new')">Crear Categoría</button>
       </div>
     </div>
     <!-- tablas -->
@@ -35,29 +35,17 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Acciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
+            <tr *ngFor="let object of listCategories">
+              <th>{{object.file}}</th>
+              <td>{{object.name}}</td>
+              <td>{{object.description}}</td>
+              <td></td>
             </tr>
           </tbody>
         </table>

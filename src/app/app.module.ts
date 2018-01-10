@@ -12,13 +12,15 @@ import { SessionService } from './service/session.service';
 import { AdministrationComponent } from './administration/administration.component';
 import { CategoriesComponent } from './administration/categories/categories.component';
 import { MenuComponent } from './administration/menu/menu.component';
+import { CategoriesUpdateComponent } from './administration/categories/categories-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdministrationComponent,
     CategoriesComponent,
-    MenuComponent
+    MenuComponent,
+    CategoriesUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,9 @@ import { MenuComponent } from './administration/menu/menu.component';
   providers: [
     SessionService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    CategoriesUpdateComponent,
+  ]
 })
 export class AppModule { }

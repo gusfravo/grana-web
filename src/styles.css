@@ -56,3 +56,13 @@ a.nav-link:hover {
     margin-top: 28px;
     color: #172B4D;
 }
+.box-row{
+  padding: 15px 0 4px 0px;
+}
+.title-left{
+  float: left; */
+  padding: 5px 0 0;
+  position: relative;
+  text-align: right;
+  word-wrap: break-word;
+}

@@ -7,6 +7,7 @@ class Category{
   // object properties
   public $id;
   public $name;
+  public $file;
   public $description;
   public $create_date;
   public $update_date;
@@ -23,7 +24,7 @@ class Category{
    */
   function create() {
     // Armamos el query
-    $query = "INSERT INTO ".$this->table_name." SET id=:id, name=:name, description=:description, create_date=:createDate, update_date=:updateDate";
+    $query = "INSERT INTO ".$this->table_name." SET id=:id, name=:name, file=:file, description=:description, create_date=:createDate, update_date=:updateDate";
 
     // Preparamos el query a ejecutar
     $stmt = $this->conn->prepare($query);
@@ -31,11 +32,13 @@ class Category{
     // Valores enviados por el post
     $this->id=htmlspecialchars(strip_tags($this->id));
     $this->name=htmlspecialchars(strip_tags($this->name));
+    $this->file=htmlspecialchars(strip_tags($this->file));
     $this->description=htmlspecialchars(strip_tags($this->description));
 
     // Bindeamos los valores
     $stmt->bindParam(":id", $this->id);
     $stmt->bindParam(":name", $this->name);
+    $stmt->bindParam(":file", $this->file);
     $stmt->bindParam(":description", $this->description);
     $stmt->bindParam(":createDate", date("Y-m-d H:i:s", strtotime($this->create_date)), PDO::PARAM_STR);
     $stmt->bindParam(":updateDate", date("Y-m-d H:i:s", strtotime($this->update_date)), PDO::PARAM_STR);
@@ -80,7 +83,7 @@ class Category{
    */
   function findAll(){
     // Generamos el query
-    $query = "SELECT id, name, description, create_date, update_date FROM " . $this->table_name . " ORDER BY name DESC";
+    $query = "SELECT id, name, file, description, create_date, update_date FROM " . $this->table_name . " ORDER BY name DESC";
 
     // Instanciamos la conexión
     $stmt = $this->conn->prepare( $query );
@@ -97,7 +100,7 @@ class Category{
    */
   function get(){
     // Construimos el query
-    $query = "SELECT id, name, description, create_date, update_date FROM " . $this->table_name . " WHERE id = ? LIMIT 0,1";
+    $query = "SELECT id, name, file, description, create_date, update_date FROM " . $this->table_name . " WHERE id = ? LIMIT 0,1";
 
     // inicializamos la conexión
     $stmt = $this->conn->prepare( $query );
@@ -114,6 +117,7 @@ class Category{
     // Cargamos los valores encontrados
     $this->id = $row['id'];
     $this->name = $row['name'];
+    $this->file = $row['file'];
     $this->description = $row['description'];
     $this->create_date = $row['create_date'];
     $this->update_date = $row['update_date'];
@@ -121,7 +125,7 @@ class Category{
 
   function update(){
     // Creamos el query
-    $query = "UPDATE " . $this->table_name . " SET id=:id, name=:name, description=:description, create_date=:createDate, update_date=:updateDate WHERE id=:id";
+    $query = "UPDATE " . $this->table_name . " SET id=:id, name=:name, file=:file, description=:description, create_date=:createDate, update_date=:updateDate WHERE id=:id";
 
     // Se inicializa la conexión
     $stmt = $this->conn->prepare($query);
@@ -129,14 +133,16 @@ class Category{
     // Valores enviados por el post
     $this->id=htmlspecialchars(strip_tags($this->id));
     $this->name=htmlspecialchars(strip_tags($this->name));
+    $this->file=htmlspecialchars(strip_tags($this->file));
     $this->description=htmlspecialchars(strip_tags($this->description));
 
     // Bindeamos los valores
     $stmt->bindParam(":id", $this->id);
     $stmt->bindParam(":name", $this->name);
+    $stmt->bindParam(":file", $this->file);
     $stmt->bindParam(":description", $this->description);
-    $stmt->bindParam(":createDate", date("Y-m-d", strtotime($this->m_end_date)), PDO::PARAM_STR);
-    $stmt->bindParam(":updateDate", date("Y-m-d", strtotime($this->m_end_date)), PDO::PARAM_STR);
+    $stmt->bindParam(":createDate", date("Y-m-d H:i:s", strtotime($this->create_date)), PDO::PARAM_STR);
+    $stmt->bindParam(":updateDate", date("Y-m-d H:i:s", strtotime($this->update_date)), PDO::PARAM_STR);
 
     try {
       // execute the query

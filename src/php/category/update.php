@@ -15,6 +15,7 @@ $category = new Category($db);
 try {
   // Inicializamos el objeto
   $category->name = $objDatos->name;
+  $category->file = $objDatos->file;
   $category->description = $objDatos->description;
   $category->update_date = date('Y-m-d H:i:s');
   // Validamos si es un update
