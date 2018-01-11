@@ -34,6 +34,9 @@ export class CategoriesComponent implements OnInit {
   list(){
     this.sessionService.postRequest('category:list',this.categoriesMin).subscribe((data:any)=>{
       this.listCategories = data.object.list;
+      for( let i=0; i<this.listCategories.length; i++){
+        this.listCategories[i].file = 'http://www.grana.mx/gallery/'+this.listCategories[i].file;
+      }
     },
     (error)=>{
       console.log('Error:category:list',error)

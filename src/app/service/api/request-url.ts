@@ -5,5 +5,8 @@ export let Urls: Array<{ code: string, url: string }> = [
   },{
     code: "category:list",
     url: "category/list.php"
+  },{
+    code: "ftp:loadFile",
+    url: "ftp/loadFile.php"
   }
 ];

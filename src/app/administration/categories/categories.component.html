@@ -21,11 +21,9 @@
     <!-- tablas -->
     <div class="row">
       <div class="col-5">
-        <div class="input-group input-group-sm mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fas fa-search"></i></span>
-          </div>
-          <input type="text" class="form-control" placeholder="Buscar..." aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        <div class="input-group">
+          <span class="input-group-addon" id="sizing-addon2"><i class="fas fa-search"></i></span>
+          <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2">
         </div>
       </div>
     </div>
@@ -42,7 +40,9 @@
           </thead>
           <tbody>
             <tr *ngFor="let object of listCategories">
-              <th>{{object.file}}</th>
+              <th>
+                <img src="{{object.file}}" class="rounded" alt="{{object.name}}" style="border-radius: 50%;" width="50" height="50">
+              </th>
               <td>{{object.name}}</td>
               <td>{{object.description}}</td>
               <td></td>

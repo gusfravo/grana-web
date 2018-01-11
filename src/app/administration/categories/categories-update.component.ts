@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { SessionService } from '../../service/session.service'
+import { FileUploader } from 'ng2-file-upload';
 
 @Component({
   selector: 'app-categories-update',
@@ -10,10 +11,13 @@ import { SessionService } from '../../service/session.service'
 })
 export class CategoriesUpdateComponent implements OnInit {
   complexForm: FormGroup;
+  uploader:FileUploader = new FileUploader({url: ''});
   categoriesModel = {
     id:'',
     name:'',
     file:'',
+    type:'',
+    base64:'',
     description:''
   }
   object = JSON.parse(JSON.stringify(this.categoriesModel));
@@ -37,12 +41,41 @@ export class CategoriesUpdateComponent implements OnInit {
 
   send(object){
     console.log(object);
-    this.sessionService.postRequest('category:update',object).subscribe(data=>{
-      this.activeModal.close(true);
-    },
-    (error)=>{
-      console.log('Error:category:update',error)
-    })
+    this.fileUpload(this.uploader).then((data)=>{
+      this.object.base64 = data;
+      object.file = object.file;
+      this.sessionService.postRequest('category:update',object).subscribe(data=>{
+        this.sessionService.postRequest('ftp:loadFile',object).subscribe(data=>{
+          this.activeModal.close(true);
+        },
+        (error)=>{
+          console.log('Error:ftp:loadFile',error)
+        })
+      },
+      (error)=>{
+        console.log('Error:category:update',error)
+      })
+    });
+
+  }
+
+  /*
+  * funcion para convertir un archivo en base 64
+  */
+  fileUpload(fileItem){
+    return new Promise(resolve => {
+      if(fileItem.queue.length > 0){
+        console.log(fileItem);
+        this.object.file= fileItem.queue[0].file.name;
+        this.object.type= fileItem.queue[0].file.type;
+        var reader = new FileReader();
+        reader.onload = (event:any) => {
+          resolve(event.target.result);
+        };
+        reader.readAsDataURL(fileItem.queue[0]._file);
+      }
+    });
+
   }
 
   /*

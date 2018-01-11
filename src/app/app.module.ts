@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarModule } from 'ng-sidebar';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
 import { SessionService } from './service/session.service';
@@ -28,6 +29,7 @@ import { CategoriesUpdateComponent } from './administration/categories/categorie
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    FileUploadModule,
     SidebarModule.forRoot(),
     NgbModule.forRoot(),
     RouterModule.forRoot([
