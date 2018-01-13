@@ -163,6 +163,21 @@ export class ProductUpdateComponent implements OnInit {
         })
      })
    }
+   /*
+   * Funcion para eliminar un ralacion de categoria con producto
+   */
+   deleteACategory(object){
+     this.sessionService.postRequest('categoryProduct:delete',object).subscribe((data:any)=>{
+       for(let i=0; i<this.categoryProductList.length; i++){
+         if(this.categoryProductList[i].id == object.id){
+           this.categoryProductList.splice(i,1);
+         }
+       }
+     },
+     (error)=>{
+       console.log('Error:category:list',error)
+     })
+   }
    private _toggleSidebar() {
      this._opened = !this._opened;
    }

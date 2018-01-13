@@ -23,5 +23,8 @@ export let Urls: Array<{ code: string, url: string }> = [
   },{
     code: "categoryProduct:findAllByProduct",
     url: "category_product/findAllByProduct.php"
+  },{
+    code: "categoryProduct:delete",
+    url: "category_product/delete.php"
   }
 ];

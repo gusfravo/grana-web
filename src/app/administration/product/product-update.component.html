@@ -123,7 +123,9 @@
                 <tbody>
                   <tr *ngFor="let object of categoryProductList">
                     <td>{{object.category.name}}</td>
-                    <td></td>
+                    <td>
+                      <a (click)="deleteACategory(object)" style="cursor: pointer;"><i class="fas fa-trash-alt"></i></a>
+                    </td>
                   </tr>
                 </tbody>
               </table>
