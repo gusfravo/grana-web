@@ -6,6 +6,9 @@ export let Urls: Array<{ code: string, url: string }> = [
     code: "category:list",
     url: "category/list.php"
   },{
+    code: "category:get",
+    url: "category/get.php"
+  },{
     code: "ftp:loadFile",
     url: "ftp/loadFile.php"
   },{
@@ -32,5 +35,8 @@ export let Urls: Array<{ code: string, url: string }> = [
   },{
     code: "productImages:findAllByProduct",
     url: "product_images/findAllByProduct.php"
+  },{
+    code: "productImages:delete",
+    url: "product_images/delete.php"
   }
 ];

@@ -35,26 +35,43 @@ export class CategoriesUpdateComponent implements OnInit {
     if(this.data == 'new'){
       // no hacemos nada por el momento
     }else{
+    this.object.id = this.data;
       // cargamos los datos de la BD
+      this.sessionService.postRequest('category:get',this.object).subscribe((data:any)=>{
+       this.object = data.object;
+      },
+      (error)=>{
+        console.log('Error:category:update',error)
+      })
     }
   }
 
   send(object){
     console.log(object);
     this.fileUpload(this.uploader).then((data)=>{
-      this.object.base64 = data;
-      object.file = object.file;
-      this.sessionService.postRequest('category:update',object).subscribe(data=>{
-        this.sessionService.postRequest('ftp:loadFile',object).subscribe(data=>{
+      if(data){
+        this.object.base64 = data;
+        object.file = object.file;
+        this.sessionService.postRequest('category:update',object).subscribe(data=>{
+          this.sessionService.postRequest('ftp:loadFile',object).subscribe(data=>{
+            this.activeModal.close(true);
+          },
+          (error)=>{
+            console.log('Error:ftp:loadFile',error)
+          })
+        },
+        (error)=>{
+          console.log('Error:category:update',error)
+        })
+      }else{
+        this.sessionService.postRequest('category:update',object).subscribe(data=>{
           this.activeModal.close(true);
         },
         (error)=>{
-          console.log('Error:ftp:loadFile',error)
+          console.log('Error:category:update',error)
         })
-      },
-      (error)=>{
-        console.log('Error:category:update',error)
-      })
+      }
+
     });
 
   }
@@ -73,6 +90,9 @@ export class CategoriesUpdateComponent implements OnInit {
           resolve(event.target.result);
         };
         reader.readAsDataURL(fileItem.queue[0]._file);
+      }else{
+        console.log("no hay archivo")
+        resolve(false);
       }
     });
 

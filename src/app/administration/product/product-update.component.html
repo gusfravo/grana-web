@@ -148,6 +148,9 @@
       </div>
       <div class="row">
         <div class="col-2" *ngFor="let object of productImagesList" style="padding: 15px;">
+          <div class="image-delete" (click)="deleteAImage(object);">
+            <span><i class="far fa-times-circle"></i></span>
+          </div>
           <img src="{{object.image}}" alt="{{object.id}}" class="rounded" width="150">
         </div>
 

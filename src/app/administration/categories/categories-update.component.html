@@ -22,7 +22,8 @@
         <label>Imagen*</label>
       </div>
       <div class="col-8">
-        <input type="file" ng2FileSelect [uploader]="uploader"  color= "primary"/>&nbsp;
+        <input type="file" ng2FileSelect [uploader]="uploader"  color= "primary" *ngIf="object.file == ''"/>&nbsp;
+        <img src="{{'http://www.grana.mx/gallery/'+object.file}}" alt="{{object.id}}" class="rounded" width="150">
       </div>
     </div>
     <div class="row box-row">

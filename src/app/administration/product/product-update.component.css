@@ -10,3 +10,11 @@ input{
   font-weight: 500;
   padding: 15px 20px;
 }
+.image-delete{
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    color: #9f8d87;
+    font-size: 25px;
+    cursor: pointer;
+}

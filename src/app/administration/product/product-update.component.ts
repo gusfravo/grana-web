@@ -228,6 +228,21 @@ export class ProductUpdateComponent implements OnInit {
        console.log('Error:category:list',error)
      })
    }
+   /*
+   * Funcion para eliminar un ralacion de producto con image
+   */
+   deleteAImage(object){
+     this.sessionService.postRequest('productImages:delete',object).subscribe((data:any)=>{
+       for(let i=0; i<this.productImagesList.length; i++){
+         if(this.productImagesList[i].id == object.id){
+           this.productImagesList.splice(i,1);
+         }
+       }
+     },
+     (error)=>{
+       console.log('Error:productImages:list',error)
+     })
+   }
    private _toggleSidebar() {
      this._opened = !this._opened;
    }

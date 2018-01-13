@@ -45,7 +45,11 @@
               </th>
               <td>{{object.name}}</td>
               <td>{{object.description}}</td>
-              <td></td>
+              <td>
+                <span style="cursor:pointer;" (click)="viewUpdateCategories(object.id)">
+                  <i class="fas fa-edit"></i>
+                </span>
+              </td>
             </tr>
           </tbody>
         </table>

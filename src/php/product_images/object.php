@@ -45,6 +45,29 @@ class ProductImages {
       return false;
     }
   }
+  /**
+   * Elimina el registro indicado
+   *
+   * @return bool
+   */
+  function delete(){
+
+    // delete query
+    $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+
+    // prepare query
+    $stmt = $this->conn->prepare($query);
+
+    // bind id of record to delete
+    $stmt->bindParam(1, $this->id);
+
+    // execute query
+    if($stmt->execute()){
+      return true;
+    }else{
+      return false;
+    }
+  }
 
   /**
    * Elimina todos las imagenes de un producto

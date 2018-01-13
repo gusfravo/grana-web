@@ -30,9 +30,9 @@ try {
       echo json_encode(array("transaction" => "bad", "message" => "Error al crear el procedimiento", "code" => "category:error:001"));
     }
   } else {
-    $user->id = $objDatos->id;
+    $category->id = $objDatos->id;
     // Actualizamos procedimiento
-    if($user->update()){
+    if($category->update()){
       echo json_encode(array("transaction" => "ok", "message" => "El procedimiento se actualizo correctamente", "code" => "category:succes:002"));
     }
     else {
