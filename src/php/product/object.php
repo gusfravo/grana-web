@@ -13,7 +13,7 @@ class Product{
   public $town;
   public $region;
   public $color;
-  public $file;
+  public $price;
   public $create_date;
   public $update_date;
 
@@ -29,7 +29,7 @@ class Product{
    */
   function create() {
     // Armamos el query
-    $query = "INSERT INTO ".$this->table_name." SET id=:id, name=:name, description=:description,  technique=:technique, measurements=:measurements, town=:town, region=:region, color=:color, file=:file, create_date=:createDate, update_date=:updateDate";
+    $query = "INSERT INTO ".$this->table_name." SET id=:id, name=:name, description=:description,  technique=:technique, measurements=:measurements, town=:town, region=:region, color=:color, price=:price, create_date=:createDate, update_date=:updateDate";
 
     // Preparamos el query a ejecutar
     $stmt = $this->conn->prepare($query);
@@ -43,7 +43,7 @@ class Product{
     $this->town=htmlspecialchars(strip_tags($this->town));
     $this->region=htmlspecialchars(strip_tags($this->region));
     $this->color=htmlspecialchars(strip_tags($this->color));
-    $this->file=htmlspecialchars(strip_tags($this->file));
+    $this->price=htmlspecialchars(strip_tags($this->price));
 
     // Bindeamos los valores
     $stmt->bindParam(":id", $this->id);
@@ -54,7 +54,7 @@ class Product{
     $stmt->bindParam(":town", $this->town);
     $stmt->bindParam(":region", $this->region);
     $stmt->bindParam(":color", $this->color);
-    $stmt->bindParam(":file", $this->file);
+    $stmt->bindParam(":price", $this->price);
     $stmt->bindParam(":createDate", date("Y-m-d H:i:s", strtotime($this->create_date)), PDO::PARAM_STR);
     $stmt->bindParam(":updateDate", date("Y-m-d H:i:s", strtotime($this->update_date)), PDO::PARAM_STR);
 
@@ -81,7 +81,7 @@ class Product{
     $stmt = $this->conn->prepare($query);
 
     // bind id of record to delete
-    $stmt->bindParam(1, $this->m_uuid);
+    $stmt->bindParam(1, $this->id);
 
     // execute query
     if($stmt->execute()){
@@ -98,7 +98,7 @@ class Product{
    */
   function findAll(){
     // Generamos el query
-    $query = "SELECT id, name, description, technique, measurements, town, region, color, file, create_date, update_date FROM " . $this->table_name . " ORDER BY name DESC";
+    $query = "SELECT id, name, description, technique, measurements, town, region, color, price, create_date, update_date FROM " . $this->table_name . " ORDER BY name DESC";
 
     // Instanciamos la conexión
     $stmt = $this->conn->prepare( $query );
@@ -115,13 +115,13 @@ class Product{
    */
   function get(){
     // Construimos el query
-    $query = "SELECT id, name, description, technique, measurements, town, region, color, file, create_date, update_date FROM " . $this->table_name . " WHERE id = ? LIMIT 0,1";
+    $query = "SELECT id, name, description, technique, measurements, town, region, color, price, create_date, update_date FROM " . $this->table_name . " WHERE id = ? LIMIT 0,1";
 
     // inicializamos la conexión
     $stmt = $this->conn->prepare( $query );
 
     // bind el parametro al query
-    $stmt->bindParam(1, $this->m_uuid);
+    $stmt->bindParam(1, $this->id);
 
     // ejecutamos el query
     $stmt->execute();
@@ -138,14 +138,14 @@ class Product{
     $this->town = $row['town'];
     $this->region = $row['region'];
     $this->color = $row['color'];
-    $this->file = $row['file'];
+    $this->price = $row['price'];
     $this->create_date = $row['create_date'];
     $this->update_date = $row['update_date'];
   }
 
   function update(){
     // Creamos el query
-    $query = "UPDATE " . $this->table_name . " SET id=:id, name=:name, description=:description,  technique=:technique, measurements=:measurements, town=:town, region=:region, color=:color, file=:file, create_date=:createDate, update_date=:updateDate WHERE id=:id";
+    $query = "UPDATE " . $this->table_name . " SET id=:id, name=:name, description=:description,  technique=:technique, measurements=:measurements, town=:town, region=:region, color=:color, price=:price, create_date=:createDate, update_date=:updateDate WHERE id=:id";
 
     // Se inicializa la conexión
     $stmt = $this->conn->prepare($query);
@@ -159,7 +159,7 @@ class Product{
     $this->town=htmlspecialchars(strip_tags($this->town));
     $this->region=htmlspecialchars(strip_tags($this->region));
     $this->color=htmlspecialchars(strip_tags($this->color));
-    $this->file=htmlspecialchars(strip_tags($this->file));
+    $this->price=htmlspecialchars(strip_tags($this->price));
 
     // Bindeamos los valores
     $stmt->bindParam(":id", $this->id);
@@ -170,7 +170,7 @@ class Product{
     $stmt->bindParam(":town", $this->town);
     $stmt->bindParam(":region", $this->region);
     $stmt->bindParam(":color", $this->color);
-    $stmt->bindParam(":file", $this->file);
+    $stmt->bindParam(":price", $this->price);
     $stmt->bindParam(":createDate", date("Y-m-d H:i:s", strtotime($this->create_date)), PDO::PARAM_STR);
     $stmt->bindParam(":updateDate", date("Y-m-d H:i:s", strtotime($this->update_date)), PDO::PARAM_STR);
 

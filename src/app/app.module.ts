@@ -14,6 +14,8 @@ import { AdministrationComponent } from './administration/administration.compone
 import { CategoriesComponent } from './administration/categories/categories.component';
 import { MenuComponent } from './administration/menu/menu.component';
 import { CategoriesUpdateComponent } from './administration/categories/categories-update.component';
+import { ProductComponent } from './administration/product/product.component';
+import { ProductUpdateComponent } from './administration/product/product-update.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { CategoriesUpdateComponent } from './administration/categories/categorie
     AdministrationComponent,
     CategoriesComponent,
     MenuComponent,
-    CategoriesUpdateComponent
+    CategoriesUpdateComponent,
+    ProductComponent,
+    ProductUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,9 @@ import { CategoriesUpdateComponent } from './administration/categories/categorie
     RouterModule.forRoot([
       { path: '', redirectTo: 'administration', pathMatch: 'full'},
       { path: 'administration', component: AdministrationComponent },
-      { path: 'administration/categories', component: CategoriesComponent }
+      { path: 'administration/categories', component: CategoriesComponent },
+      { path: 'administration/product', component: ProductComponent },
+      { path: 'administration/product/update/:id', component: ProductUpdateComponent },
     ],{ useHash: true }),
   ],
   providers: [
@@ -44,6 +50,7 @@ import { CategoriesUpdateComponent } from './administration/categories/categorie
   bootstrap: [AppComponent],
   entryComponents: [
     CategoriesUpdateComponent,
+    ProductUpdateComponent,
   ]
 })
 export class AppModule { }

@@ -1,0 +1,147 @@
+<ng-sidebar-container style="height: 100vh" contentClass="sidebar-class">
+
+  <!-- A sidebar -->
+  <ng-sidebar [(opened)]="_opened" mode="push" [dock]="true" [dockedSize]="'50px'" [autoCollapseWidth]="300" [autoFocus]="false">
+    <app-menu (change)="toogleMenu($event)"></app-menu>
+  </ng-sidebar>
+
+  <!-- Page content -->
+  <div ng-sidebar-content class="content-sidebar">
+    <div class="row">
+      <div class="col-6 view-list-header">
+        Crear Productos
+      </div>
+    </div>
+    <div class="card">
+      <div class="row">
+        <div class="col-6">
+          <div class="row mini-title">
+            Datos Generales
+          </div>
+          <div class="row">
+            <div class="col-4 title-left">
+              <label>Nombre*</label>
+            </div>
+            <div class="col-8">
+              <div class="form-group" [ngClass] = "complexForm.controls['name'].invalid && complexForm.controls['name'].touched ? 'has-danger' :complexForm.controls['name'].invalid? '' :'has-success'">
+                <input type="text" class="form-control" id="inputnameNumer" aria-describedby="nameNumerHelp" placeholder="Nombre"  name = "registername" [formControl]="complexForm.controls['name']" [(ngModel)]="object.name">
+                <small class="form-control-feedback" *ngIf="complexForm.controls['name'].hasError('required') && complexForm.controls['name'].touched"  id="nameNumerHelp">Por favor ingrese el nombre</small>
+              </div>
+            </div>
+            <!--  -->
+            <div class="col-4 title-left">
+              <label>Precio*</label>
+            </div>
+            <div class="col-8">
+              <div class="form-group" [ngClass] = "complexForm.controls['price'].invalid && complexForm.controls['price'].touched ? 'has-danger' :complexForm.controls['price'].invalid? '' :'has-success'">
+                <input type="text" class="form-control" id="inputpriceNumer" aria-describedby="priceNumerHelp" placeholder="Nombre"  price = "registerprice" [formControl]="complexForm.controls['price']" [(ngModel)]="object.price">
+                <small class="form-control-feedback" *ngIf="complexForm.controls['price'].hasError('required') && complexForm.controls['price'].touched"  id="priceNumerHelp">Por favor ingrese un precio</small>
+              </div>
+            </div>
+            <!--  -->
+            <div class="col-2 title-left">
+              <label>Técnica</label>
+            </div>
+            <div class="col-4 ">
+              <div class="form-group">
+              <input type="text" class="form-control" placeholder="Descripción" aria-describedby="basic-addon1" [(ngModel)]="object.technique">
+            </div>
+            </div>
+            <!--  -->
+            <div class="col-2 title-left">
+              <label>Color</label>
+            </div>
+            <div class="col-4 ">
+              <div class="form-group">
+              <input type="text" class="form-control" placeholder="Descripción" aria-describedby="basic-addon1" [(ngModel)]="object.color">
+            </div>
+            </div>
+            <!--  -->
+            <div class="col-2 title-left">
+              <label>Medidas</label>
+            </div>
+            <div class="col-4 ">
+              <div class="form-group">
+              <input type="text" class="form-control" placeholder="Descripción" aria-describedby="basic-addon1" [(ngModel)]="object.measurements">
+            </div>
+            </div>
+            <!--  -->
+            <div class="col-2 title-left">
+              <label>Región</label>
+            </div>
+            <div class="col-4 ">
+              <div class="form-group">
+              <input type="text" class="form-control" placeholder="Descripción" aria-describedby="basic-addon1" [(ngModel)]="object.region">
+            </div>
+            </div>
+            <!--  -->
+            <div class="col-2 title-left">
+              <label>Poblado</label>
+            </div>
+            <div class="col-4 ">
+              <div class="form-group">
+              <input type="text" class="form-control" placeholder="Descripción" aria-describedby="basic-addon1" [(ngModel)]="object.town">
+            </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4 title-left">
+              <label>Descripción</label>
+            </div>
+            <div class="col-8 ">
+              <div class="form-group">
+                <textarea name="textarea" rows="2" cols="12" class="form-control" placeholder="Descripción" [(ngModel)]="object.description">
+                </textarea>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row mini-title">
+            Categorias
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <label for="exampleSelect1">Seleccione una o mas categoias</label>
+                <select class="form-control" id="exampleSelect1" [(ngModel)]="metadata.categoryProductModel.category.id" (ngModelChange)="addCategory(metadata.categoryProductModel.category.id);" [disabled]="object.name == '' || object.price == ''">
+                  <option *ngFor="let object of categoryList" [value]="object.id">{{object.name}}</option>
+                  <option value="">- - - Seleccionar - - -</option>
+
+                </select>
+              </div>
+            </div>
+            <div class="col-12">
+              Listado de Categorias Seleccionadas.
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let object of categoryProductList">
+                    <td>{{object.category.name}}</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 mini-title">
+          Imagenes
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <button type="button" class="btn btn-primary btn-sm" (click)="send(object,true)" [disabled]="object.id == ''">Guardar</button>
+          <button type="button" class="btn btn-outline-primary btn-sm" routerLink="/administration/product/">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-sidebar-container>

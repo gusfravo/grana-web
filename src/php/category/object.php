@@ -66,7 +66,7 @@ class Category{
     $stmt = $this->conn->prepare($query);
 
     // bind id of record to delete
-    $stmt->bindParam(1, $this->m_uuid);
+    $stmt->bindParam(1, $this->id);
 
     // execute query
     if($stmt->execute()){
@@ -106,7 +106,7 @@ class Category{
     $stmt = $this->conn->prepare( $query );
 
     // bind el parametro al query
-    $stmt->bindParam(1, $this->m_uuid);
+    $stmt->bindParam(1, $this->id);
 
     // ejecutamos el query
     $stmt->execute();

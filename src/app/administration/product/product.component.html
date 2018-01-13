@@ -1,0 +1,57 @@
+<ng-sidebar-container style="height: 100vh" contentClass="sidebar-class">
+
+  <!-- A sidebar -->
+  <ng-sidebar [(opened)]="_opened" mode="push" [dock]="true" [dockedSize]="'50px'" [autoCollapseWidth]="300" [autoFocus]="false">
+    <app-menu (change)="toogleMenu($event)"></app-menu>
+  </ng-sidebar>
+
+  <!-- Page content -->
+  <div ng-sidebar-content class="content-sidebar">
+
+    <div class="row">
+      <div class="col-6 view-list-header">
+        Productos
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-10 d-flex justify-content-end">
+        <button type="button" class="btn btn-light btn-sm" routerLink="/administration/product/update/new">Crear Producto</button>
+      </div>
+    </div>
+    <!-- tablas -->
+    <div class="row">
+      <div class="col-5">
+        <div class="input-group">
+          <span class="input-group-addon" id="sizing-addon2"><i class="fas fa-search"></i></span>
+          <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let object of listProduct">
+              <td>{{object.name}}</td>
+              <td>{{object.description}}</td>
+              <td>
+                <a routerLink = "/administration/product/update/{{object.id}}">
+                  <i class="fas fa-edit"></i>
+
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</ng-sidebar-container>
