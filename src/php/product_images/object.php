@@ -3,12 +3,12 @@
 class ProductImages {
   // database connection and table name
   private $conn;
-  private $table_name = "category_product";
+  private $table_name = "product_images";
 
   // object properties
   public $id;
   public $product_id;
-  public $image
+  public $image;
 
   // constructor con $db as database conexión
   public function __construct($db){

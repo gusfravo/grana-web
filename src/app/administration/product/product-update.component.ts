@@ -39,8 +39,16 @@ export class ProductUpdateComponent implements OnInit {
       product:{
         id:''
       }
+    },
+    productImages:{
+      id:'',
+      image:'',
+      product:{
+        id:''
+      }
     }
   }
+  productImagesList = [];
   object = JSON.parse(JSON.stringify(this.productModel));
   data = '';
   constructor( public fb: FormBuilder, protected sessionService: SessionService, private router: Router, private activatedRoute: ActivatedRoute) {
@@ -62,6 +70,7 @@ export class ProductUpdateComponent implements OnInit {
            // cargamos los datos de la BD
            this.sessionService.postRequest('product:get',this.object).subscribe((data:any)=>{
             this.object = data.object;
+            this.getImagesFromProduct();
             // verificamos que categorias estan selecionadas.
             this.sessionService.postRequest('categoryProduct:findAllByProduct',{product:{id:this.object.id}}).subscribe((data:any)=>{
               this.categoryProductList = data.object.list;
@@ -111,8 +120,7 @@ export class ProductUpdateComponent implements OnInit {
      return new Promise(resolve => {
        if(fileItem.queue.length > 0){
          console.log(fileItem);
-         this.object.file= fileItem.queue[0].file.name;
-         this.object.type= fileItem.queue[0].file.type;
+         this.metadata.productImages.image= fileItem.queue[0].file.name;
          var reader = new FileReader();
          reader.onload = (event:any) => {
            resolve(event.target.result);
@@ -121,6 +129,48 @@ export class ProductUpdateComponent implements OnInit {
        }
      });
 
+   }
+   /*
+   funcion para subir una imagen
+   */
+   addImages(){
+     this.metadata.productImages.product.id = this.object.id;
+     this.fileUpload(this.uploader).then((data)=>{
+       let base64Temp = data;
+       this.sessionService.postRequest('productImages:update',this.metadata.productImages).subscribe((data:any)=>{
+         this.metadata.productImages.id = data.object.id;
+         this.sessionService.postRequest('ftp:loadFile',{base64:base64Temp,file:this.metadata.productImages.image}).subscribe(data=>{
+           this.metadata.productImages.image = 'http://www.grana.mx/gallery/' + this.metadata.productImages.image;
+           this.productImagesList.push(JSON.parse(JSON.stringify(this.metadata.productImages)))
+           this.metadata.productImages.id = '';
+           this.metadata.productImages.image = '';
+           this.uploader = new FileUploader({url: ''});
+         },
+         (error)=>{
+           console.log('Error:ftp:loadFile',error)
+         })
+       },
+       (error)=>{
+         console.log('Error:productImages:update',error)
+       })
+     });
+
+   }
+   /*
+   * funcion para obetner la images de un prodcuto
+   */
+   getImagesFromProduct(){
+     this.sessionService.postRequest('productImages:findAllByProduct',{product:{id:this.object.id}}).subscribe((data:any)=>{
+       this.productImagesList = data.object.list;
+       console.log(this.productImagesList);
+       for( let i=0; i<this.productImagesList.length; i++){
+         this.productImagesList[i].image = 'http://www.grana.mx/gallery/'+this.productImagesList[i].image;
+       }
+       // buscamos si el producto tiene asociados categorias.
+     },
+     (error)=>{
+       console.log('Error:productImages:findAllByProduct',error)
+     })
    }
    /*
    *obetenemos la lista de productos disponibles

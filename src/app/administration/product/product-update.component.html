@@ -137,12 +137,20 @@
         <div class="col-12 mini-title">
           Imagenes
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <button type="button" class="btn btn-primary btn-sm" (click)="send(object,true)" [disabled]="object.id == ''">Guardar</button>
+        <div class="col-6">
+          <input type="file" ng2FileSelect [uploader]="uploader"  color= "primary"/>&nbsp;
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-outline-info btn-sm" (click) ="addImages();" [disabled]="uploader.queue.length == 0 || object.id == ''">Subir</button>
+          <button type="button" class="btn btn-primary btn-sm" (click)="send(object,true)" [disabled]="object.id == ''">Guardar Producto</button>
           <button type="button" class="btn btn-outline-primary btn-sm" routerLink="/administration/product/">Cancelar</button>
         </div>
+      </div>
+      <div class="row">
+        <div class="col-2" *ngFor="let object of productImagesList" style="padding: 15px;">
+          <img src="{{object.image}}" alt="{{object.id}}" class="rounded" width="150">
+        </div>
+
       </div>
     </div>
   </div>
