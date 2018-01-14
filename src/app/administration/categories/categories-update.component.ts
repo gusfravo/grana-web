@@ -97,6 +97,12 @@ export class CategoriesUpdateComponent implements OnInit {
     });
 
   }
+  /*
+  *Eliminar una imagen
+  */
+  deleteAImage(){
+    this.object.file = '';
+  }
 
   /*
   funcion para cerrar un modal
