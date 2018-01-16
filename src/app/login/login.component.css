@@ -1,0 +1,12 @@
+.logo{
+  max-width: 100%;
+}
+.login{
+  height: calc(100vh);
+  background: linear-gradient(#501d27, #e2ac33);
+}
+.login-card{
+  padding: 40px;
+  background: #fffdfd87;
+  border-radius: 12px;
+}

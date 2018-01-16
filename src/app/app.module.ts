@@ -16,6 +16,9 @@ import { MenuComponent } from './administration/menu/menu.component';
 import { CategoriesUpdateComponent } from './administration/categories/categories-update.component';
 import { ProductComponent } from './administration/product/product.component';
 import { ProductUpdateComponent } from './administration/product/product-update.component';
+import { LoginComponent } from './login/login.component';
+import { AuthenticationGuard } from './service/authentication.guard';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { ProductUpdateComponent } from './administration/product/product-update.
     CategoriesUpdateComponent,
     ProductComponent,
     ProductUpdateComponent,
+    LoginComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,15 +42,18 @@ import { ProductUpdateComponent } from './administration/product/product-update.
     SidebarModule.forRoot(),
     NgbModule.forRoot(),
     RouterModule.forRoot([
-      { path: '', redirectTo: 'administration', pathMatch: 'full'},
-      { path: 'administration', component: AdministrationComponent },
-      { path: 'administration/categories', component: CategoriesComponent },
-      { path: 'administration/product', component: ProductComponent },
-      { path: 'administration/product/update/:id', component: ProductUpdateComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full'},
+      { path: 'home',component:HomeComponent },
+      { path: 'login',component:LoginComponent },
+      { path: 'administration', canActivate:[AuthenticationGuard], component: AdministrationComponent },
+      { path: 'administration/categories', canActivate:[AuthenticationGuard], component: CategoriesComponent },
+      { path: 'administration/product', canActivate:[AuthenticationGuard], component: ProductComponent },
+      { path: 'administration/product/update/:id', canActivate:[AuthenticationGuard], component: ProductUpdateComponent },
     ],{ useHash: true }),
   ],
   providers: [
     SessionService,
+    AuthenticationGuard,
   ],
   bootstrap: [AppComponent],
   entryComponents: [

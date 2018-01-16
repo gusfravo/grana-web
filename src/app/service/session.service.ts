@@ -15,8 +15,27 @@ let server_url = SERVER_URL;
 
 @Injectable()
 export class SessionService {
+  private isUserLoggedIn;
 
-  constructor(protected http: Http) {}
+  constructor(protected http: Http) {
+    this.isUserLoggedIn = false;
+  }
+
+  getLoggedIn() {
+    return this.isUserLoggedIn;
+  }
+
+  login(object) {
+    return new Promise((resolve)=>{
+      this.postRequest("user:login",object).subscribe((data:any)=>{
+        this.isUserLoggedIn = true;
+        resolve(data);
+      },
+      error =>{
+        resolve(false);
+      })
+    })
+  }
 
 
   /*

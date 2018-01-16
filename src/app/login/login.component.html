@@ -1,0 +1,27 @@
+<section class="login row justify-content-md-center align-items-center align-middle">
+  <div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 p-0">
+    <div class="card login-card">
+      <div class="card-body">
+        <div class="text-center logo pb-2">
+          <img src="assets/logo.png" class="logo">
+        </div>
+        <form class="card-text" name="login">
+          <div class="form-group" [ngClass] = "complexForm.controls['username'].invalid && complexForm.controls['username'].touched ? 'has-danger' : complexForm.controls['username'].invalid ? '' : 'has-success'">
+            <!-- <label for="exampleInputEmail1">Dirección de correo</label> -->
+            <input type="email"  class="form-control" aria-describedby="emailHelp" placeholder="Dirección de correo" name="email" [formControl]="complexForm.controls['username']" [(ngModel)]="object.username" (keydown.Enter)="login(object)">
+            <div class="form-control-feedback" *ngIf="complexForm.controls['username'].hasError('required')  && complexForm.controls['username'].touched">Ingrese la dirección de correo electrónico</div>
+          </div>
+          <div class="form-group" [ngClass] = "complexForm.controls['password'].hasError('required') && complexForm.controls['password'].touched ? 'has-danger' : complexForm.controls['password'].invalid ? '' : 'has-success'">
+            <!-- <label for="exampleInputPassword1">Contraseña</label> -->
+            <input type="password" class="form-control"  placeholder="Contraseña" name="password" [formControl]="complexForm.controls['password']" [(ngModel)]="object.password" (keydown.Enter)="login(object)">
+            <div class="form-control-feedback" *ngIf="complexForm.controls['password'].hasError('required')  && complexForm.controls['password'].touched">La contraseña es un campo requerido</div>
+          </div>
+        </form>
+        <div class="text-center">
+          <button class="btn btn-info btn-sm btn-block" (click)="login(object);">Iniciar Sesión</button><br>
+          <a class="" style="cursor:pointer;">Olvidé Contraseña</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
