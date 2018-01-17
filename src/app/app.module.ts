@@ -42,7 +42,7 @@ import { HomeComponent } from './home/home.component';
     SidebarModule.forRoot(),
     NgbModule.forRoot(),
     RouterModule.forRoot([
-      { path: '', redirectTo: 'home', pathMatch: 'full'},
+      { path: '', redirectTo: 'login', pathMatch: 'full'},
       { path: 'home',component:HomeComponent },
       { path: 'login',component:LoginComponent },
       { path: 'administration', canActivate:[AuthenticationGuard], component: AdministrationComponent },
