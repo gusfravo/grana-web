@@ -1,0 +1,37 @@
+.custom-nav{
+  max-height: 3rem;
+  z-index: 10000;
+  background-color: #1f140f;
+  box-shadow: 0 8px 8px 4px rgba(0, 0, 0, 0.2), 0 6px 20px 4px rgba(0, 0, 0, 0.19);
+  background-image: url('/assets/patron-06.png');
+}
+.logo-portada{
+  width: 100%;
+}
+.box-links{
+  margin-left: 25%;
+}
+.navbar-light .navbar-nav a.nav-link{
+  color: white;
+  font-family: 'stayWildy';
+  font-size: 16pt;
+  padding-right: 50px;
+  padding-left: 50px;
+  border-radius: 0px;
+}
+.navbar-light .navbar-nav a.nav-link.active {
+  border-bottom: 3px solid white;
+  border-top: 3px solid white;
+  border-radius: 0px;
+}
+ .navbar-light .navbar-nav a.nav-link.active:hover{
+   border-bottom: 3px solid white;
+   border-top: 3px solid white;
+   border-radius: 0px;
+}
+/* Estilos de la seccion 1*/
+.section-1{
+  height: calc(100vh);
+  background-color: #650d27;
+  background-image: url("/assets/patron-05.png");
+}
