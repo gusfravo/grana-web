@@ -76,3 +76,27 @@ a.nav-link:hover {
 select{
   font-size: 11px;
 }
+/*Estilo de botones grana*/
+.btn-custom{
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  padding: 10px 40px;
+  margin: 20px auto 0;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: Oswald,Arial,Helvetica,sans-serif;
+  color: #fff !important;
+  background: 0 0;
+  border: solid 2px #fff;
+  transition: all .7s linear;
+}
+.btn-custom:hover {
+    background-color: #fff;
+    border-color: #fff;
+    color: #000 !important;
+    cursor: pointer;
+}
