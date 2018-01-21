@@ -185,3 +185,27 @@ figure img {
 .box-item:hover > .category-btn {
   opacity: 1;
 }
+/*Estilos de seccion de quienes somos*/
+.box-quienes-somos{
+  color: white !important;
+  text-align: justify;
+  padding-right: 20px;
+  font-size: 1.5vw;
+}
+.box-quienes-somos-left{
+  color: white !important;
+  text-align: justify;
+  padding-left: 20px;
+  font-size: 1.5vw;
+}
+.quotate-grana{
+  color: white;
+  font-family: 'stayWildy';
+  background: #0000006b;
+  font-size: 3vw;
+  height: 3rem;
+  margin-top: 3%;
+  text-align: center;
+  text-transform: capitalize;
+  margin-top: -10%
+}
