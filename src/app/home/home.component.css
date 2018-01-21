@@ -64,8 +64,11 @@ transition: all .3s linear;
   background-image: url("/assets/patron-05.png");
   padding-top: 20%;
 }
-.section-1,.section-2,.section-3,.section-4{
+.section-1{
   height: calc(100vh);
+}
+.section-2,.section-3,.section-4{
+  padding-top: 50px;
 }
 .list-items {
     width: 100%;
