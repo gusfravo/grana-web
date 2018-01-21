@@ -212,3 +212,35 @@ figure img {
   text-transform: capitalize;
   margin-top: -10%
 }
+/* Estilos de footer*/
+.footer{
+  background-color: #e2e2e291;
+  background-image: url('/assets/patron-07.png');
+  background-size: 15rem;
+}
+.footer-address{
+  display: inline-grid;
+  text-align: center;
+  font-size: 1.2vw;
+  font-weight: 500;
+}
+.footer-address img{
+  align-items: center;
+  margin:10px auto;
+  display:block;
+}
+.social-icons{
+  display: inline-grid;
+  text-align: center;
+  font-size: 1.2vw;
+  font-weight: 500;
+}
+.social-icons a{
+  align-items: center;
+  margin:5px auto;
+  display:block;
+  color: black;
+}
+.social-network{
+  margin-top: 5%;
+}
