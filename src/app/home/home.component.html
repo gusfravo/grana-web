@@ -58,12 +58,12 @@
         <section class="section-1">
           <div class="grid row">
             <ul class="list-items list-flex" style="list-style-type:none;">
-              <li class="col-10 col-md-3" *ngFor="let object of listCategories">
+              <li class="col-6 col-md-3" *ngFor="let object of listCategories">
                 <div class="box-item">
                   <div  class="box-title">
-                    {{object.name}}
+                    {{object.name}} <br>
+                    <a class="btn-custom category-btn">ENTRAR</a>
                   </div>
-                  <a class="btn-custom category-btn">ENTRAR</a>
                   <figure class="rollover">
                     <a>
                       <div class="box-photo">
@@ -162,7 +162,7 @@
   </div>
 
   <div class="footer">
-    <div class="row justify-content-center">
+    <div class="row justify-content-sm-center">
       <div class="col-4 footer-address pt-6">
         <img src="assets/web-grana-12.png" alt="hola" style="width:35px;">
         Macedonio Alcalá 901-B <br>
