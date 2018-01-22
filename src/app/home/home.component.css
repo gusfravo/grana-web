@@ -163,32 +163,34 @@ figure img {
 /*Estilos de titulos de categorias*/
 .box-title{
   position: absolute;
-    z-index: 1001;
-    color: white;
-    font-size: 3.5rem;
-    text-align: center;
-    top: 20%;
-    left: 25%;
-    font-family: 'stayWildy';
-    font-variant-caps: all-petite-caps;
-    text-shadow: 2px 2px 3px #000;
-    transition: all .7s linear;
+  font-size: 2.0em;
+  width: 100%;
+  z-index: 1001;
+  color: white;
+  text-align: center;
+  top: 20%;
+  font-family: 'stayWildy';
+  font-variant-caps: all-petite-caps;
+  text-shadow: 2px 2px 3px #000;
+  transition: all .7s linear;
 }
 .box-item:hover > .box-title {
   top: 10%;
 }
 .category-btn{
-  top: 50%;
+  top: 25%;
   position: absolute;
   z-index: 1001;
-  left: 0;
+  width: 70%;
+  left: 15%;
   opacity: 0;
   transition: all .7s linear;
   padding: 10px 20px;
-  font-size: 1.4rem;
-  text-shadow:none;
+  font-size: 9pt;
+  text-shadow: none;
+  text-align: center;
 }
-.box-item:hover > .box-title .category-btn {
+.box-item:hover > .category-btn {
   opacity: 1;
 }
 /*Estilos de seccion de quienes somos*/
