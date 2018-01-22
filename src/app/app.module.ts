@@ -19,6 +19,7 @@ import { ProductUpdateComponent } from './administration/product/product-update.
 import { LoginComponent } from './login/login.component';
 import { AuthenticationGuard } from './service/authentication.guard';
 import { HomeComponent } from './home/home.component';
+import { CategoriesProductsComponent } from './home/categories-products/categories-products.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { HomeComponent } from './home/home.component';
     ProductUpdateComponent,
     LoginComponent,
     HomeComponent,
+    CategoriesProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ import { HomeComponent } from './home/home.component';
       { path: '', redirectTo: 'home', pathMatch: 'full'},
       { path: 'home',component:HomeComponent },
       { path: 'login',component:LoginComponent },
+      { path: 'home/product/:categoryName/:productUuid',component:CategoriesProductsComponent },
       { path: 'administration', canActivate:[AuthenticationGuard], component: AdministrationComponent },
       { path: 'administration/categories', canActivate:[AuthenticationGuard], component: CategoriesComponent },
       { path: 'administration/product', canActivate:[AuthenticationGuard], component: ProductComponent },

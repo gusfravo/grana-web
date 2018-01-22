@@ -29,8 +29,8 @@
             <hr class="linear-edge-left">
             <div class="menu-title">
               CONTACTO
-              <hr class="linear-edge-rigth">
             </div>
+            <hr class="linear-edge-rigth">
           </a>
         </li>
         <li class="nav-item">
@@ -59,7 +59,7 @@
           <div class="grid row">
             <ul class="list-items list-flex" style="list-style-type:none;">
               <li class="col-6 col-md-3" *ngFor="let object of listCategories">
-                <div class="box-item">
+                <div class="box-item" routerLink="/home/product/{{object.name}}/{{object.id}}" >
                   <div  class="box-title">
                     {{object.name}} <br>
                   </div>

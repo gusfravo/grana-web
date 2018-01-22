@@ -1,0 +1,92 @@
+.menu-fixed{
+  position: fixed;
+  z-index: 1200;
+}
+.custom-nav{
+  max-height: 3rem;
+  z-index: 10000;
+  background-color: #1f140f;
+  box-shadow: 0 8px 8px 4px rgba(0, 0, 0, 0.2), 0 6px 20px 4px rgba(0, 0, 0, 0.19);
+  background-image: url('/assets/patron-06.png');
+  background-size: 15rem;
+}
+.logo-portada{
+  width: 100%;
+}
+.box-links{
+  margin-left: 25%;
+}
+.navbar-light .navbar-nav a.nav-link{
+  color: white;
+  font-family: 'stayWildy';
+  font-size: 16pt;
+  padding-right: 50px;
+  padding-left: 50px;
+  border-radius: 0px;
+  overflow: hidden;
+}
+/* .navbar-light .navbar-nav a.nav-link.active { */
+  /* border-bottom: 3px solid white; */
+  /* border-top: 3px solid white; */
+  /* border-radius: 0px; */
+/* } */
+ /* .navbar-light .navbar-nav a.nav-link.active:hover{ */
+   /* border-bottom: 2px solid white;
+   border-top: 2px solid white; */
+   /* border-radius: 0px; */
+   /* transition: all .3s linear; */
+/* } */
+.navbar-light .navbar-nav a.nav-link.active > .linear-edge-left{
+  margin: 0%;
+}
+.navbar-light .navbar-nav a.nav-link.active > .linear-edge-rigth{
+  margin: 0%;
+}
+.navbar-light .navbar-nav a.nav-link:hover > .linear-edge-left{
+  margin: 0%;
+}
+.navbar-light .navbar-nav a.nav-link:hover > .linear-edge-rigth{
+  margin: 0%;
+}
+.linear-edge-left{
+border-top: 2px solid rgb(255, 255, 255);
+margin: 50%;
+margin-bottom: 0;
+margin-top: 0;
+transition: all .3s linear;
+}
+.linear-edge-rigth{
+border-top: 2px solid rgb(255, 255, 255);
+margin: 50%;
+margin-bottom: 0;
+margin-top: 0;
+transition: all .3s linear;
+}
+/*Estilos del contenedor*/
+.container-products{
+  top: 10%;
+  background-size: 15rem;
+  background-color: #1f140f;
+  background-image: url("/assets/patron-06.png");
+  padding-top: 20%;
+}
+
+.header-product{
+  color: white;
+  font-size: 1.5vw;
+}
+
+.search-box {
+    background: #65192d;
+    padding: 10px;
+    border-radius: 15px;
+    color: white;
+    margin-top: -15%;
+}
+.list-group-item:first-child {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+.list-categories{
+  margin-top: 5%;
+}
