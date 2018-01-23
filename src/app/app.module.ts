@@ -47,7 +47,7 @@ import { CategoriesProductsComponent } from './home/categories-products/categori
       { path: '', redirectTo: 'home', pathMatch: 'full'},
       { path: 'home',component:HomeComponent },
       { path: 'login',component:LoginComponent },
-      { path: 'home/product/:categoryName/:productUuid',component:CategoriesProductsComponent },
+      { path: 'home/product/:categoryName/:categoryUuid',component:CategoriesProductsComponent },
       { path: 'administration', canActivate:[AuthenticationGuard], component: AdministrationComponent },
       { path: 'administration/categories', canActivate:[AuthenticationGuard], component: CategoriesComponent },
       { path: 'administration/product', canActivate:[AuthenticationGuard], component: ProductComponent },

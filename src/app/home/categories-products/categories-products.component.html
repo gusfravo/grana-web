@@ -62,7 +62,7 @@
           </div>
           <div class="list-categories">
             <ul class="list-group">
-              <li class="list-group-item" *ngFor="let object of listCategories">
+              <li class="list-group-item custom-list" [ngClass]="{'custom-list-activated': object.selected}" *ngFor="let object of listCategories" (click)="colorCategory(object);">
                 <span><i class="fas fa-angle-right" style="position: absolute; margin-left: 85%;"></i></span>
                 {{object.name}}
               </li>
@@ -71,10 +71,35 @@
         </div>
         <div class="col-8">
           <div class="header-product">
-            ALFARERIA
+            {{categoriesModel.name}}
           </div>
           <hr style="border-top: 2px solid rgb(255, 255, 255); width:100%;">
-          HOLA
+          <div class="row">
+            <div class="col-sm-6 col-md-3" *ngFor="let object of productsList">
+              <div class="box-item1">
+                <figure class="rollover1">
+                  <a>
+                    <div class="box-photo1">
+                      <img *ngIf="object.product.images.length > 0" src="{{object.product.images[0].image}}" alt="{{object.product.name}}">
+                      <img *ngIf="object.product.images.length == 0" src="assets/no-diposible.png" alt="Holas">
+                    </div>
+                  </a>
+                </figure>
+                <div class="box-info">
+                  <div class="content">
+                    <div class="row">
+                      <div class="col-12" style="text-align:center; font-size:0.7rem; text-transform: uppercase;">
+                        {{object.product.name}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="productsList.length == 0" class="col-12" style="color:white;text-align:center;">
+              <h5> NO HAY RESULTADOS</h5>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -69,6 +69,7 @@ transition: all .3s linear;
   background-color: #1f140f;
   background-image: url("/assets/patron-06.png");
   padding-top: 20%;
+  min-height: calc(100vh);
 }
 
 .header-product{
@@ -89,4 +90,84 @@ transition: all .3s linear;
 }
 .list-categories{
   margin-top: 5%;
+}
+.custom-list:hover{
+  background: #651a2e;
+  color: white;
+  cursor: pointer;
+}
+.custom-list-activated{
+  background: #651a2e;
+  color: white;
+  cursor: pointer;
+}
+/*Estilos de listado de productos*/
+.box-item1{
+  position: relative;
+  width: 100%;
+  -webkit-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+  background: white
+}
+.rollover1{
+  /* display: block; */
+  background: #E6EAEA;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  margin: 10px;
+}
+.box-item1:not(.no-hover):hover .box-photo1 img {
+    opacity: 0.5;
+}
+
+.box-item1:hover:not(.no-scale) .box-photo1 img {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+figure {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+}
+
+.rollover1 .box-photo1 {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background: #fff;
+    height: 150px;
+}
+
+img {
+    width: 100%;
+    float: left;
+}
+
+.rollover1 img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+.lazy-loaded {
+    opacity: 1;
+}
+figure img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.box-info {
+  position: relative;
+  clear: both;
+  background-color: #fcfcfc;
+  margin-top: -5px;
+}
+.box-item1 div.content {
+    padding: 20px;
 }
