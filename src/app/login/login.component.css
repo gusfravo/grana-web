@@ -3,7 +3,9 @@
 }
 .login{
   height: calc(100vh);
-  background: linear-gradient(#501d27, #e2ac33);
+  background-size: 15rem;
+  background-color: #650d27;
+  background-image: url("/assets/patron-05.png");
 }
 .login-card{
   padding: 40px;

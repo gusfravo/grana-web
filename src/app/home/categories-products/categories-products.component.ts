@@ -129,11 +129,18 @@ export class CategoriesProductsComponent implements OnInit {
   open(content,object) {
     this.productModel = object.product;
     console.log(this.productModel);
+    if(this.productModel.images.length > 0){
+      this.productModel.file = this.productModel.images[0].image;
+    }
     this.modalService.open(content,{ windowClass: 'modal-content-products', size:'lg'}).result.then((result) => {
       console.log(result)
     }, (reason) => {
       console.log(reason);
     });
+  }
+  /* funcion para cambiar de imagen*/
+  changeImage(image){
+    this.productModel.file = image;
   }
 
 }

@@ -111,14 +111,14 @@
   <div class="modal-header">
     <h4 class="modal-title">{{productModel.name}}</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true" style="position: absolute; margin-top: -7%; margin-left: -1%;">&times;</span>
+      <span aria-hidden="true" style="position: absolute; margin-top: -4%; margin-left: -1%;">&times;</span>
     </button>
   </div>
   <div class="modal-body">
     <div class="row">
       <div class="col-4">
         <div class="main-modal-image">
-          <img *ngIf="productModel.images.length > 0" src="{{productModel.images[0].image}}" alt="{{productModel.name}}">
+          <img *ngIf="productModel.images.length > 0" src="{{productModel.file}}" alt="{{productModel.name}}">
           <img *ngIf="productModel.images.length == 0" src="assets/no-diposible.png" alt="No-hay-imagen">        </div>
       </div>
       <div class="col-6" style="text-align: center; font-size: 9pt; font-weight: 400;">
@@ -144,7 +144,7 @@
           <strong>Precio: </strong> $ {{productModel.price}} <br>
         </div>
         <div class="row">
-          <div class="col-4" *ngFor="let object of productModel.images">
+          <div class="col-4" *ngFor="let object of productModel.images" (click)="changeImage(object.image)">
             <img src="{{object.image}}" alt="{{object.image}}">
           </div>
         </div>
