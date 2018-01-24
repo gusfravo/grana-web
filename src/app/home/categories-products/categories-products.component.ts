@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { SessionService } from '../../service/session.service'
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-categories-products',
   templateUrl: './categories-products.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./categories-products.component.css']
 })
 export class CategoriesProductsComponent implements OnInit {
@@ -35,7 +37,7 @@ export class CategoriesProductsComponent implements OnInit {
     images:[]
   }
 
-  constructor(protected sessionService: SessionService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(protected sessionService: SessionService, private router: Router, private activatedRoute: ActivatedRoute, private modalService: NgbModal) { }
 
   ngOnInit() {
 
@@ -123,6 +125,15 @@ export class CategoriesProductsComponent implements OnInit {
       console.log('Error:productImages:findAllByProduct',error)
     })
   }
-
+  /* holas */
+  open(content,object) {
+    this.productModel = object.product;
+    console.log(this.productModel);
+    this.modalService.open(content,{ windowClass: 'modal-content-products', size:'lg'}).result.then((result) => {
+      console.log(result)
+    }, (reason) => {
+      console.log(reason);
+    });
+  }
 
 }

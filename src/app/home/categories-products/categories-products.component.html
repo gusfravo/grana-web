@@ -55,7 +55,7 @@
   <div class="row justify-content-sm-center">
     <div class="col-10">
       <div class="row">
-        <div class="col-4">
+        <div class="col-3">
           <div class="search-box">
             <label for="search">BUSCADOR</label>
             <input type="text" class="form-control" id="inputSearch" placeholder="Buscar...">
@@ -76,7 +76,7 @@
           <hr style="border-top: 2px solid rgb(255, 255, 255); width:100%;">
           <div class="row">
             <div class="col-sm-6 col-md-3" *ngFor="let object of productsList">
-              <div class="box-item1">
+              <div class="box-item1"  (click)="open(content, object)">
                 <figure class="rollover1">
                   <a>
                     <div class="box-photo1">
@@ -105,3 +105,50 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{productModel.name}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true" style="position: absolute; margin-top: -7%; margin-left: -1%;">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-4">
+        <div class="main-modal-image">
+          <img *ngIf="productModel.images.length > 0" src="{{productModel.images[0].image}}" alt="{{productModel.name}}">
+          <img *ngIf="productModel.images.length == 0" src="assets/no-diposible.png" alt="No-hay-imagen">        </div>
+      </div>
+      <div class="col-6" style="text-align: center; font-size: 9pt; font-weight: 400;">
+        <div *ngIf="productModel.technique != ''">
+          <strong>Técnica: </strong> {{productModel.technique}} <br>
+        </div>
+        <div *ngIf="productModel.measurements != ''">
+          <strong>Medidas: </strong> {{productModel.measurements}} <br>
+        </div>
+        <div *ngIf="productModel.color != ''">
+          <strong>Color: </strong> {{productModel.color}} <br>
+        </div>
+        <div *ngIf="productModel.town != ''">
+          <strong>Poblado: </strong> {{productModel.town}} <br>
+        </div>
+        <div *ngIf="productModel.region != ''">
+          <strong>Región: </strong> {{productModel.region}} <br>
+        </div>
+        <div *ngIf="productModel.description != ''">
+          <strong>Descripción: </strong> {{productModel.description}} <br>
+        </div>
+        <div *ngIf="productModel.price != ''" style="color: #64192c !important;font-size: 11pt;">
+          <strong>Precio: </strong> $ {{productModel.price}} <br>
+        </div>
+        <div class="row">
+          <div class="col-4" *ngFor="let object of productModel.images">
+            <img src="{{object.image}}" alt="{{object.image}}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

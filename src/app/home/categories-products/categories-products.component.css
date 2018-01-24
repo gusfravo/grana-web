@@ -171,3 +171,26 @@ figure img {
 .box-item1 div.content {
     padding: 20px;
 }
+/*Estilso del modal*/
+.modal-content-products{
+  margin-top: 15%;
+  width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal-content-products .modal-content{
+  width: 100%
+}
+.modal-header{
+    border: none;
+}
+.modal-title {
+    margin-bottom: 0;
+    line-height: 1.5;
+    margin: 10px auto;
+    text-transform: uppercase;
+    color: #65192d;
+    font-size: 1.2vw;
+    font-weight: 700;
+}
