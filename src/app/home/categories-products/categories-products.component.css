@@ -107,7 +107,8 @@ transition: all .3s linear;
   width: 100%;
   -webkit-transition: background 0.3s ease-in-out;
   transition: background 0.3s ease-in-out;
-  background: white
+  background: white;
+  height: 100%;
 }
 .rollover1{
   /* display: block; */
@@ -115,6 +116,10 @@ transition: all .3s linear;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   margin: 10px;
+}
+.box-photo1 img{
+  -webkit-transform: scale(1.4);
+  transform: scale(1.4);
 }
 .box-item1:not(.no-hover):hover .box-photo1 img {
     opacity: 0.5;
@@ -127,7 +132,6 @@ transition: all .3s linear;
 figure {
     position: relative;
     display: inline-block;
-    margin: 0;
 }
 
 .rollover1 .box-photo1 {
@@ -152,6 +156,7 @@ img {
     transition: all 0.3s ease-in-out;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
+    margin: 25% auto;
 }
 .lazy-loaded {
     opacity: 1;
