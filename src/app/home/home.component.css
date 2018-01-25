@@ -65,7 +65,7 @@ transition: all .3s linear;
   padding-top: 20%;
 }
 .section-1{
-  height: calc(100vh);
+  /* height: calc(100vh); */
 }
 .section-2,.section-3,.section-4{
   padding-top: 50px;
@@ -248,4 +248,7 @@ figure img {
 }
 .social-network{
   margin-top: 5%;
+}
+video{
+  width: 100%;
 }

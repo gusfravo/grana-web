@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarModule } from 'ng-sidebar';
 import { FileUploadModule } from 'ng2-file-upload';
+import { ScrollSpyModule } from 'ngx-scrollspy';
 
 import { AppComponent } from './app.component';
 import { SessionService } from './service/session.service';
@@ -42,6 +43,7 @@ import { CategoriesProductsComponent } from './home/categories-products/categori
     ReactiveFormsModule,
     FileUploadModule,
     SidebarModule.forRoot(),
+    ScrollSpyModule.forRoot(),
     NgbModule.forRoot(),
     RouterModule.forRoot([
       { path: '', redirectTo: 'home', pathMatch: 'full'},

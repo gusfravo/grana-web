@@ -1,4 +1,4 @@
-<div class="menu-fixed col-12 p-0">
+<div class="menu-fixed col-12 p-0" data-spy="scroll" data-target="navbarTogglerDemo01" data-offset="80">
   <nav class="navbar navbar-toggleable-sm navbar-light bg-faded custom-nav">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -7,7 +7,7 @@
       <!-- <a class="navbar-brand">Hidden brand</a> -->
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0 box-links">
         <li class="nav-item">
-          <a class="nav-link">
+          <a class="nav-link" href="#section2">
             <hr class="linear-edge-left">
             <div class="menu-title">
               QUIENES SOMOS
@@ -25,7 +25,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link">
+          <a class="nav-link" href="#contact">
             <hr class="linear-edge-left">
             <div class="menu-title">
               CONTACTO
@@ -34,7 +34,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link">
+          <a class="nav-link" href="#multimedia">
             <hr class="linear-edge-left">
             <div class="menu-title">
               MULTIMEDIA
@@ -59,11 +59,11 @@
           <div class="grid row">
             <ul class="list-items list-flex" style="list-style-type:none;">
               <li class="col-6 col-md-3" *ngFor="let object of listCategories">
-                <div class="box-item" routerLink="/home/product/{{object.name}}/{{object.id}}" >
+                <div class="box-item">
                   <div  class="box-title">
                     {{object.name}} <br>
                   </div>
-                  <a class="btn-custom category-btn">ENTRAR</a>
+                  <a class="btn-custom category-btn" routerLink="/home/product/{{object.name}}/{{object.id}}" >ENTRAR</a>
                   <figure class="rollover">
                     <a>
                       <div class="box-photo">
@@ -76,7 +76,7 @@
             </ul>
           </div>
         </section>
-        <section class="section-2">
+        <section class="section-2" id="section2">
           <div class="row">
             <div class="col-6">
             </div>
@@ -121,7 +121,7 @@
             </div>
           </div>
         </section>
-        <section class="section-3">
+        <!-- <section class="section-3">
           <div class="row">
             <div class="col-6">
               <div class="box-quienes-somos-left">
@@ -153,17 +153,23 @@
               id fringilla erat sagittis. Phasellus mattis tellus quis laoreet rhoncus.
             </div>
           </div>
-        </section>
-        <section class="section-4">
+        </section> -->
+        <section class="section-4" id="multimedia">
+          <div class="video">
+            <video controls #videoPlayer>
+              <source src="http://grana.mx/gallery/video.mov" type="video/mp4" />
+              Browser not supported
+            </video>
+          </div>
         </section>
 
       </div>
     </div>
   </div>
 
-  <div class="footer">
+  <div class="footer" id = "contact">
     <div class="row justify-content-sm-center">
-      <div class="col-4 footer-address pt-6">
+      <div class="col-sm-4 footer-address pt-6">
         <img src="assets/web-grana-12.png" alt="hola" style="width:35px;">
         Macedonio Alcalá 901-B <br>
         Centro, Oaxaca de Juárez, Oaxaca <br>
