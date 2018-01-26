@@ -64,11 +64,10 @@ transition: all .3s linear;
 }
 /*Estilos del contenedor*/
 .container-products{
-  top: 10%;
   background-size: 15rem;
   background-color: #1f140f;
   background-image: url("/assets/patron-06.png");
-  padding-top: 20%;
+  padding-top: 10%;
   min-height: calc(100vh);
 }
 
@@ -108,7 +107,7 @@ transition: all .3s linear;
   -webkit-transition: background 0.3s ease-in-out;
   transition: background 0.3s ease-in-out;
   background: white;
-  height: 100%;
+  margin-bottom: 10%;
 }
 .rollover1{
   /* display: block; */
@@ -172,6 +171,7 @@ figure img {
   clear: both;
   background-color: #fcfcfc;
   margin-top: -5px;
+  height: 80px;
 }
 .box-item1 div.content {
     padding: 20px;
