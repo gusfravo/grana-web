@@ -58,11 +58,13 @@ transition: all .3s linear;
 }
 /* Estilos de la seccion 1*/
 .container-section{
-  top: 10%;
   background-size: 15rem;
   background-color: #650d27;
   background-image: url("/assets/patron-05.png");
-  padding-top: 20%;
+  padding-top: 5%;
+}
+.grana-logo{
+  padding-bottom: 30px;
 }
 .section-1{
   /* height: calc(100vh); */
