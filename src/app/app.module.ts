@@ -46,7 +46,7 @@ import { CategoriesProductsComponent } from './home/categories-products/categori
     ScrollSpyModule.forRoot(),
     NgbModule.forRoot(),
     RouterModule.forRoot([
-      { path: '', redirectTo: 'login', pathMatch: 'full'},
+      { path: '', redirectTo: 'home', pathMatch: 'full'},
       { path: 'home',component:HomeComponent },
       { path: 'login',component:LoginComponent },
       { path: 'home/product/:categoryName/:categoryUuid',component:CategoriesProductsComponent },
