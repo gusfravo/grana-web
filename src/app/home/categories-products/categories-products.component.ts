@@ -44,8 +44,9 @@ export class CategoriesProductsComponent implements OnInit {
     this.getCategories().then(data=>{
       this.activatedRoute.params.subscribe((params: Params) => {
         this.data = params['categoryUuid'];
-        if(this.data == 'new'){
-
+        if(this.data == 'all'){
+          this.categoriesModel.id = this.listCategories[0].id;
+          this.colorCategory(this.categoriesModel);
         }else{
           this.categoriesModel.id = this.data;
           this.colorCategory(this.categoriesModel);

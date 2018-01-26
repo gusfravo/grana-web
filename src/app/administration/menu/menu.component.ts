@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { SessionService } from '../../service/session.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -8,7 +10,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class MenuComponent implements OnInit {
   @Output() change: EventEmitter<boolean> = new EventEmitter<boolean>();
   toogle:boolean = true;
-  constructor() { }
+  constructor(protected sessionService: SessionService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,5 +23,10 @@ export class MenuComponent implements OnInit {
     }
     this.change.emit(this.toogle);
   }
+   logout(){
+     this.sessionService.logout().then(()=>{
+       this.router.navigate(['/login']);
+     })
+   }
 
 }

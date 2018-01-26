@@ -11,15 +11,22 @@ import { SessionService } from '../../service/session.service';
 export class ProductComponent implements OnInit {
   private _opened: boolean = true;
   listProduct = [];
+  listCategories = [];
   productMin = {
     max:0,
     offset:0
+  }
+  metadata = {
+    category:{
+      id: ''
+    }
   }
 
   constructor(private modalService: NgbModal, protected sessionService: SessionService) { }
 
   ngOnInit() {
     this.list();
+    this.getCategories();
   }
   private _toggleSidebar() {
     this._opened = !this._opened;
@@ -54,5 +61,36 @@ export class ProductComponent implements OnInit {
     }, (reason) => {
       console.log(reason);
     });
+  }
+  getCategories(){
+    return new Promise(resolve=>{
+      this.sessionService.postRequest('category:list',{}).subscribe((data:any)=>{
+        this.listCategories = data.object.list;
+        resolve(this.listCategories);
+      },
+      (error)=>{
+        console.log('Error:category:list',error)
+        resolve(false);
+      })
+    });
+  }
+  /*
+  * funcion para obtener una lista de productos por categoria.
+  */
+  findAllByCategory(){
+    if(this.metadata.category.id != ''){
+      this.sessionService.postRequest('categoryProduct:findAllByCategory',{category:{id:this.metadata.category.id}}).subscribe((data:any)=>{
+        this.listProduct = [];
+        for( let i=0; i<data.object.list.length; i++){
+          this.listProduct.push(data.object.list[i].product);
+        }
+      },
+      (error)=>{
+        console.log('Error:category:list',error)
+      })
+    }else{
+      this.list();
+    }
+
   }
 }

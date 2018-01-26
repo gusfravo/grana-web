@@ -36,6 +36,12 @@ export class SessionService {
       })
     })
   }
+  logout(){
+    return new Promise((resolve)=>{
+      this.isUserLoggedIn = false;
+      resolve(true);
+    })
+  }
 
 
   /*

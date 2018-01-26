@@ -28,7 +28,7 @@ if($num>0){
     $product->id = $row['product_id'];
     $product->get();
     // Recorremos cada registro
-    $output[] = array("id" => $row['id'], "category"=>array("id" => $row['category_id']), "product"=>array("id"=>$row['product_id'], "name" =>$product->name, "description" =>$product->description, "technique" =>$product->technique, "measurements" =>$product->measurements, "town" =>$product->town, "region" =>$product->region, "price" =>$product->price));
+    $output[] = array("id" => $row['id'], "category"=>array("id" => $row['category_id']), "product"=>array("id"=>$row['product_id'], "name" =>$product->name, "description" =>$product->description, "technique" =>$product->technique, "measurements" =>$product->measurements, "town" =>$product->town, "region" =>$product->region, "price" =>$product->price, "color"=>$product->color));
   }
 }
 

@@ -1,0 +1,22 @@
+.menu-sidebar{
+  background-image: url('/assets/patron-07.png');
+  background-color: #607D8B;
+  background-size: 13rem;
+}
+.menu-blur{
+  height: calc(100vh);
+  background-color: #000000ad;
+}
+
+a.nav-link{
+  color: white;
+}
+a.nav-link:hover{
+  background-color: rgba(200, 200, 200, 0.2);
+  color: white;
+  box-shadow: none;
+}
+a.nav-link.active{
+  background-color: #607d8bd6;
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px #607D8B;
+}
