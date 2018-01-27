@@ -44,5 +44,8 @@ export let Urls: Array<{ code: string, url: string }> = [
   },{
     code: "categoryProduct:findAllByCategory",
     url: "category_product/findAllByCategory.php"
+  },{
+    code: "categoryProduct:findAllByCategoryWithImages",
+    url: "category_product/findAllByCategoryWithImages.php"
   }
 ];

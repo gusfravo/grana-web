@@ -97,11 +97,12 @@ export class CategoriesProductsComponent implements OnInit {
   */
   findAllByCategory(){
     this.productsList = [];
-    this.sessionService.postRequest('categoryProduct:findAllByCategory',{category:{id:this.categoriesModel.id}}).subscribe((data:any)=>{
+    this.sessionService.postRequest('categoryProduct:findAllByCategoryWithImages',{category:{id:this.categoriesModel.id}}).subscribe((data:any)=>{
       this.productsList = data.object.list;
       for( let i=0; i<this.productsList.length; i++){
-        this.productsList[i].product.images = [];
-        this.getImagesFromProduct(this.productsList[i]);
+        for( let j=0; j<this.productsList[i].product.images.length; j++){
+          this.productsList[i].product.images[j].image = 'http://www.grana.mx/gallery/'+this.productsList[i].product.images[j].image;
+        }
       }
       // console.log(this.productsList);
     },
