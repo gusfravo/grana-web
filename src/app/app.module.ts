@@ -8,6 +8,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarModule } from 'ng-sidebar';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ScrollSpyModule } from 'ngx-scrollspy';
+import { Ng2PageScrollModule } from 'ng2-page-scroll';
+
 
 import { AppComponent } from './app.component';
 import { SessionService } from './service/session.service';
@@ -44,10 +46,11 @@ import { CategoriesProductsComponent } from './home/categories-products/categori
     FileUploadModule,
     SidebarModule.forRoot(),
     ScrollSpyModule.forRoot(),
+    Ng2PageScrollModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
-      { path: '', redirectTo: 'home', pathMatch: 'full'},
-      { path: 'home',component:HomeComponent },
+      { path: '', redirectTo: 'home/index', pathMatch: 'full'},
+      { path: 'home/:id',component:HomeComponent },
       { path: 'login',component:LoginComponent },
       { path: 'home/product/:categoryName/:categoryUuid',component:CategoriesProductsComponent },
       { path: 'administration', canActivate:[AuthenticationGuard], component: AdministrationComponent },

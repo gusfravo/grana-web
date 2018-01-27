@@ -24,12 +24,14 @@
   padding-left: 50px;
   border-radius: 0px;
   overflow: hidden;
+  cursor: pointer;
 }
-/* .navbar-light .navbar-nav a.nav-link.active { */
-  /* border-bottom: 3px solid white; */
-  /* border-top: 3px solid white; */
-  /* border-radius: 0px; */
-/* } */
+.navbar-light .navbar-nav a.nav-link.active > .linear-edge-left {
+  margin: 0%;
+}
+.navbar-light .navbar-nav a.nav-link.active > .linear-edge-rigth {
+  margin: 0%;
+}
  /* .navbar-light .navbar-nav a.nav-link.active:hover{ */
    /* border-bottom: 2px solid white;
    border-top: 2px solid white; */

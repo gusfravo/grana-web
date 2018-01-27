@@ -1,6 +1,8 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, Inject } from '@angular/core';
 import { SessionService } from '../service/session.service'
-import { ScrollSpyModule, ScrollSpyService } from 'ngx-scrollspy';
+import { PageScrollConfig, PageScrollService, PageScrollInstance } from 'ng2-page-scroll';
+import { DOCUMENT} from '@angular/common';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +11,27 @@ import { ScrollSpyModule, ScrollSpyService } from 'ngx-scrollspy';
 })
 export class HomeComponent implements AfterViewInit {
   listCategories = [];
+  metadata = {
+    menu:''
+  }
+  private container: ElementRef;
 
-  constructor(protected sessionService: SessionService, private scrollSpyService: ScrollSpyService) { }
+  constructor(protected sessionService: SessionService, private pageScrollService: PageScrollService, @Inject(DOCUMENT) private document: any, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngAfterViewInit() {
+    this.activatedRoute.params.subscribe((params: Params) => {
+      console.log(params['id']);
+      if(params['id'] != 'index'){
+        this.metadata.menu = params['id'];
+        this.goToHead(this.metadata.menu);
+      }
+    });
     this.list();
-    // this.scrollSpyService.getObservable('window').subscribe((e: any) => {
-		// 	console.log('ScrollSpy::window: ', e);
-		// });
+  }
+  goToHead(head){
+    this.metadata.menu = head;
+    let pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#'+head);
+    this.pageScrollService.start(pageScrollInstance);
   }
   /*
    funcion para listar el catalogo de categorias
