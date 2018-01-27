@@ -9,7 +9,7 @@ import { SidebarModule } from 'ng-sidebar';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ScrollSpyModule } from 'ngx-scrollspy';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
-
+import { ParallaxModule } from 'ngx-parallax';
 
 import { AppComponent } from './app.component';
 import { SessionService } from './service/session.service';
@@ -47,6 +47,7 @@ import { CategoriesProductsComponent } from './home/categories-products/categori
     SidebarModule.forRoot(),
     ScrollSpyModule.forRoot(),
     Ng2PageScrollModule,
+    ParallaxModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       { path: '', redirectTo: 'home/index', pathMatch: 'full'},
