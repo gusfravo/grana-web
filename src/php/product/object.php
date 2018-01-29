@@ -109,6 +109,22 @@ class Product{
     return $stmt;
   }
 
+  function findByName($name){
+    // Generamos el query
+    $query = "SELECT id, name, description, technique, measurements, town, region, color, price, create_date, update_date FROM " . $this->table_name . " WHERE name LIKE :name ORDER BY name DESC";
+
+    // Instanciamos la conexión
+    $stmt = $this->conn->prepare( $query );
+
+    // bind el parametro al query
+    $stmt->bindParam(":name", $name);
+
+    // Ejecutamos el query
+    $stmt->execute();
+
+    return $stmt;
+  }
+
 
   /**
    * Obtenemos el elemento a partir de su uuid

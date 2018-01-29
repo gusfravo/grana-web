@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductUpdateComponent } from './product-update.component';
 import { SessionService } from '../../service/session.service';
+import * as Rx from 'rxjs/Rx';
 
 @Component({
   selector: 'app-product',
@@ -14,15 +15,34 @@ export class ProductComponent implements OnInit {
   listCategories = [];
   productMin = {
     max:0,
-    offset:0
+    offset:0,
+    name:''
   }
   metadata = {
     category:{
       id: ''
-    }
+    },
+    searchBoxInput:  new Rx.Subject<string>()
   }
 
-  constructor(private modalService: NgbModal, protected sessionService: SessionService) { }
+  constructor(private modalService: NgbModal, protected sessionService: SessionService) {
+    this.metadata.searchBoxInput.debounceTime(700)
+    .switchMap(val => {
+      // console.log('called once',val)
+      if(val != ''){
+        this.productMin.name = val;
+        this.findAllByName();
+      }else{
+        this.list();
+      }
+      return val;
+    }).subscribe(results => {
+      // Modificaciones sobre cada letra si se requiere
+    }, error => {
+    // console.log('error logged:');
+    // console.log(error);
+  });
+   }
 
   ngOnInit() {
     this.list();
@@ -46,6 +66,27 @@ export class ProductComponent implements OnInit {
       console.log('Error:product:list',error)
     })
   }
+
+  /*
+   funcion para buscar productos por nombre
+  */
+  findAllByName(){
+    this.sessionService.postRequest('product:findLikeName',{name: '%'+this.productMin.name+'%'}).subscribe((data:any)=>{
+      this.listProduct = data.object.list;
+    },
+    (error)=>{
+      console.log('Error:product:findLikeName',error)
+    })
+  }
+
+  searchProduct(){
+    if(this.productMin.name != ''){
+      this.metadata.searchBoxInput.next(this.productMin.name);
+    }else{
+      this.list();
+    }
+  }
+
 
   /*
   * Modal para crear categorias
@@ -92,5 +133,20 @@ export class ProductComponent implements OnInit {
       this.list();
     }
 
+  }
+  /*
+  Funcion para eliminar un producto.
+  */
+  deleteAProduct(object){
+    this.sessionService.postRequest('product:delete',object).subscribe((data:any)=>{
+      for(let i=0; i<this.listProduct.length; i++){
+        if(this.listProduct[i].id == object.id){
+          this.listProduct.splice(i,1);
+        }
+      }
+    },
+    (error)=>{
+      console.log('Error:product:delete',error)
+    })
   }
 }
