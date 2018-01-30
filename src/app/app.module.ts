@@ -11,6 +11,8 @@ import { ScrollSpyModule } from 'ngx-scrollspy';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import { ParallaxModule } from 'ngx-parallax';
 import { ImageViewerModule } from "ngx-image-viewer";
+import { SimpleNotificationsModule } from 'angular2-notifications';
+
 
 import { AppComponent } from './app.component';
 import { SessionService } from './service/session.service';
@@ -47,6 +49,7 @@ import { CategoriesProductsComponent } from './home/categories-products/categori
     FileUploadModule,
     SidebarModule.forRoot(),
     ScrollSpyModule.forRoot(),
+    SimpleNotificationsModule.forRoot(),
     Ng2PageScrollModule,
     ParallaxModule,
     NgbModule.forRoot(),

@@ -7,6 +7,15 @@ import { SessionService } from './service/session.service'
 })
 export class AppComponent {
   title = 'app';
+  options = {
+    position: ["top", "right"],
+    timeOut: 5000,
+    lastOnBottom:false,
+    showProgressBar: true,
+    pauseOnHover: true,
+    clickToClose: true,
+    animate:"fromLeft"
+   }
   constructor(protected sessionService: SessionService){}
   testphp(){
     this.sessionService.postRequest('category:update',{

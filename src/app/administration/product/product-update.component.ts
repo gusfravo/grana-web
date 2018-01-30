@@ -4,6 +4,7 @@ import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms'
 import { SessionService } from '../../service/session.service'
 import { FileUploader } from 'ng2-file-upload';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
   selector: 'app-product-update',
@@ -51,7 +52,7 @@ export class ProductUpdateComponent implements OnInit {
   productImagesList = [];
   object = JSON.parse(JSON.stringify(this.productModel));
   data = '';
-  constructor( public fb: FormBuilder, protected sessionService: SessionService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor( public fb: FormBuilder, protected sessionService: SessionService, private router: Router, private activatedRoute: ActivatedRoute, public notificationCtrl: NotificationsService) {
     this.complexForm = fb.group({
       // To add a validator, we must first convert the string value into an array. The first item in the array is the default value if any, then the next item in the array is the validator. Here we are adding a required validator meaning that the firstName attribute must have a value in it.
       'name': [null, Validators.compose([Validators.required])],
@@ -137,6 +138,7 @@ export class ProductUpdateComponent implements OnInit {
      this.metadata.productImages.product.id = this.object.id;
      this.fileUpload(this.uploader).then((data)=>{
        let base64Temp = data;
+       this.notificationCtrl.info("Estamos subiendo la imagen, espera un momento.");
        this.sessionService.postRequest('productImages:update',this.metadata.productImages).subscribe((data:any)=>{
          this.metadata.productImages.id = data.object.id;
          this.sessionService.postRequest('ftp:loadFile',{base64:base64Temp,file:this.metadata.productImages.image}).subscribe(data=>{
@@ -145,6 +147,7 @@ export class ProductUpdateComponent implements OnInit {
            this.metadata.productImages.id = '';
            this.metadata.productImages.image = '';
            this.uploader = new FileUploader({url: ''});
+           this.notificationCtrl.info("Imagen agregada con exito..");
          },
          (error)=>{
            console.log('Error:ftp:loadFile',error)
