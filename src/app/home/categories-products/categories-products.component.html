@@ -120,8 +120,10 @@
     <div class="row">
       <div class="col-4">
         <div class="main-modal-image">
-          <img *ngIf="productModel.images.length > 0" src="{{productModel.file}}" alt="{{productModel.name}}">
-          <img *ngIf="productModel.images.length == 0" src="assets/no-diposible.png" alt="No-hay-imagen">        </div>
+          <ngx-image-viewer *ngIf="productModel.images.length > 0"  [src]="[productModel.file]"></ngx-image-viewer>
+          <!-- <img *ngIf="productModel.images.length > 0" (click)="zoom(productModel.file);" src="{{productModel.file}}" alt="{{productModel.name}}"> -->
+          <img *ngIf="productModel.images.length == 0" src="assets/no-diposible.png" alt="No-hay-imagen">
+        </div>
       </div>
       <div class="col-6" style="text-align: center; font-size: 9pt; font-weight: 400;">
         <div *ngIf="productModel.technique != ''">

@@ -10,6 +10,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { ScrollSpyModule } from 'ngx-scrollspy';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import { ParallaxModule } from 'ngx-parallax';
+import { ImageViewerModule } from "ngx-image-viewer";
 
 import { AppComponent } from './app.component';
 import { SessionService } from './service/session.service';
@@ -49,6 +50,7 @@ import { CategoriesProductsComponent } from './home/categories-products/categori
     Ng2PageScrollModule,
     ParallaxModule,
     NgbModule.forRoot(),
+    ImageViewerModule.forRoot(),
     RouterModule.forRoot([
       { path: '', redirectTo: 'home/index', pathMatch: 'full'},
       { path: 'home/:id',component:HomeComponent },

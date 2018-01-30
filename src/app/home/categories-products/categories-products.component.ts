@@ -36,6 +36,9 @@ export class CategoriesProductsComponent implements OnInit {
     town:'',
     images:[]
   }
+  metadata = {
+    image:''
+  }
 
   constructor(protected sessionService: SessionService, private router: Router, private activatedRoute: ActivatedRoute, private modalService: NgbModal) { }
 
@@ -143,6 +146,12 @@ export class CategoriesProductsComponent implements OnInit {
   /* funcion para cambiar de imagen*/
   changeImage(image){
     this.productModel.file = image;
+  }
+  /*
+  funcion para ver una imagen en modo zoom
+  */
+  zoom(object){
+    this.metadata.image = object;
   }
 
 }
