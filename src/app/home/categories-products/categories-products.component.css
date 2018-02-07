@@ -199,7 +199,7 @@ figure img {
     font-size: 1.2vw;
     font-weight: 700;
 }
-
 button.default {
-    display: none;
+  height: 30px !important;
+  width: 30px !important;
 }

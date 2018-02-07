@@ -4,4 +4,4 @@ function isConnetion()
     return window.location.hostname.indexOf('www.grana.mx') == 0;
 }
 
-export let SERVER_URL = isConnetion() ? "./php/" : "http://localhost:81/";
+export let SERVER_URL = isConnetion() ? "./php/" : "./php/";
